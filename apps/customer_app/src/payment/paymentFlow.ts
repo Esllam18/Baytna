@@ -1,0 +1,3 @@
+import * as Linking from "expo-linking"; import { CustomerApi } from "../api/customer";
+export async function startHostedPayment(api:CustomerApi,orderId:string){ const p=await api.createPaymentIntent(orderId,`mobile-${orderId}-${Date.now()}`); if(!p.checkout_url) throw new Error('Payment provider did not return checkout URL'); await Linking.openURL(p.checkout_url); return {paymentId:p.id,checkoutUrl:p.checkout_url}; }
+export async function resolvePaymentAfterRedirect(api:CustomerApi,orderId:string){ const payment=await api.payment(orderId); const order=await api.order(orderId); return {payment,order}; }

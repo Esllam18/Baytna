@@ -1,0 +1,38 @@
+name: Pilot Mobile Builds
+
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: "EAS build profile"
+        required: true
+        type: choice
+        options:
+          - pilot
+          - pilot-diagnostics
+        default: pilot
+
+jobs:
+  eas-build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [customer_app, chef_app, driver_app]
+    defaults:
+      run:
+        working-directory: apps/${{ matrix.app }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install --no-audit --no-fund
+      - name: Validate Expo token exists
+        run: test -n "$EXPO_TOKEN"
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      - name: Submit Android build
+        run: npx eas-cli@latest build --profile "${{ inputs.profile }}" --platform android --non-interactive --no-wait
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}

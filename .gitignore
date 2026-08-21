@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+.idea/
+.vscode/
+.DS_Store
+
+# Node / Expo generated files
+node_modules/
+.expo/
+.expo-shared/
+*.log
+
+# Local audit/export output
+.driver-audit-export/
+.chef-audit-export/
+.customer-audit-export/
+
+# Local hotfix backups
+hotfix_backups/

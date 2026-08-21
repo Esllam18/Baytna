@@ -1,0 +1,53 @@
+name: Frontend Validation
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "apps/customer_app/**"
+      - "apps/chef_app/**"
+      - "apps/driver_app/**"
+      - "apps/admin_dashboard/**"
+      - "scripts/frontend_preflight.py"
+
+jobs:
+  source-preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/frontend_preflight.py
+
+  admin-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/admin_dashboard
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install --no-audit --no-fund
+      - run: npm run build
+        env:
+          VITE_BAYTNA_ENV: staging
+          VITE_BAYTNA_API_BASE_URL: https://pilot-api.example.com
+
+  mobile-typecheck:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [customer_app, chef_app, driver_app]
+    defaults:
+      run:
+        working-directory: apps/${{ matrix.app }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install --no-audit --no-fund
+      - run: npm run typecheck

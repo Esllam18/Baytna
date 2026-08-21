@@ -1,0 +1,126 @@
+"""Sprint 20 Chef Order Acceptance, Preparation and Handoff.
+
+Revision ID: 0005_sprint20
+Revises: 0004_sprint19
+"""
+from alembic import op
+import sqlalchemy as sa
+
+
+revision = "0005_sprint20"
+down_revision = "0004_sprint19"
+branch_labels = None
+depends_on = None
+
+
+NEW_ORDER_STATUS_CHECK = (
+    "status IN ("
+    "'pending_payment',"
+    "'confirmed',"
+    "'accepted_by_chef',"
+    "'preparing',"
+    "'ready_for_pickup',"
+    "'cancelled',"
+    "'expired'"
+    ")"
+)
+
+OLD_ORDER_STATUS_CHECK = (
+    "status IN ("
+    "'pending_payment',"
+    "'confirmed',"
+    "'cancelled',"
+    "'expired'"
+    ")"
+)
+
+
+def upgrade() -> None:
+    with op.batch_alter_table("orders", recreate="always") as batch_op:
+        batch_op.drop_constraint("ck_orders_status", type_="check")
+        batch_op.create_check_constraint(
+            "ck_orders_status",
+            NEW_ORDER_STATUS_CHECK,
+        )
+
+    op.create_table(
+        "chef_order_fulfillments",
+        sa.Column("order_id", sa.Uuid(), nullable=False),
+        sa.Column("chef_id", sa.Uuid(), nullable=False),
+        sa.Column("stage", sa.String(length=30), nullable=False),
+        sa.Column(
+            "acceptance_deadline_at",
+            sa.DateTime(timezone=True),
+            nullable=True,
+        ),
+        sa.Column(
+            "estimated_ready_at",
+            sa.DateTime(timezone=True),
+            nullable=True,
+        ),
+        sa.Column("accepted_at", sa.DateTime(timezone=True), nullable=True),
+        sa.Column(
+            "preparation_started_at",
+            sa.DateTime(timezone=True),
+            nullable=True,
+        ),
+        sa.Column(
+            "packaging_started_at",
+            sa.DateTime(timezone=True),
+            nullable=True,
+        ),
+        sa.Column("ready_at", sa.DateTime(timezone=True), nullable=True),
+        sa.Column("rejected_at", sa.DateTime(timezone=True), nullable=True),
+        sa.Column(
+            "rejection_reason",
+            sa.String(length=240),
+            nullable=True,
+        ),
+        sa.Column("chef_note", sa.Text(), nullable=True),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False),
+        sa.CheckConstraint(
+            "stage IN ('new','accepted','preparing','packaging','ready','rejected')",
+            name="ck_chef_order_fulfillment_stage",
+        ),
+        sa.ForeignKeyConstraint(
+            ["chef_id"],
+            ["chef_profiles.user_id"],
+            ondelete="RESTRICT",
+        ),
+        sa.ForeignKeyConstraint(
+            ["order_id"],
+            ["orders.id"],
+            ondelete="CASCADE",
+        ),
+        sa.PrimaryKeyConstraint("order_id"),
+    )
+    op.create_index(
+        "ix_chef_order_fulfillments_chef_id",
+        "chef_order_fulfillments",
+        ["chef_id"],
+    )
+    op.create_index(
+        "ix_chef_fulfillment_queue",
+        "chef_order_fulfillments",
+        ["chef_id", "stage", "acceptance_deadline_at"],
+    )
+
+
+def downgrade() -> None:
+    op.drop_index(
+        "ix_chef_fulfillment_queue",
+        table_name="chef_order_fulfillments",
+    )
+    op.drop_index(
+        "ix_chef_order_fulfillments_chef_id",
+        table_name="chef_order_fulfillments",
+    )
+    op.drop_table("chef_order_fulfillments")
+
+    with op.batch_alter_table("orders", recreate="always") as batch_op:
+        batch_op.drop_constraint("ck_orders_status", type_="check")
+        batch_op.create_check_constraint(
+            "ck_orders_status",
+            OLD_ORDER_STATUS_CHECK,
+        )

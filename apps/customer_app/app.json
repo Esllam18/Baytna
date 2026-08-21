@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "بيتنا",
+    "slug": "baytna-customer",
+    "scheme": "baytna",
+    "version": "0.50.0",
+    "orientation": "portrait",
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-notifications",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "نحتاج الوصول للصور لإرفاق الصور داخل بيتنا."
+        }
+      ],
+      "@sentry/react-native/expo"
+    ],
+    "android": {
+      "package": "com.baytna.customer"
+    }
+  }
+}

@@ -1,0 +1,182 @@
+[17:05:05] 
+[17:05:05] ===== Preflight =====
+[17:05:05] Project: D:\Baytna\apps\chef_app
+[17:05:05] Repair version: v4.2
+[17:05:05] Encoding guard: UTF-8 without BOM enforced for JSON/config files.
+[17:05:05] 
+[17:05:05] ===== Backup =====
+[17:05:05] Backup: D:\Baytna\hotfix_backups\chef_full_audit_v4_2_20260820-170505
+[17:05:05] 
+[17:05:05] ===== Normalize Expo SDK 54 configuration =====
+[17:05:06] package.json aligned to the same SDK54 family used by the working Customer App; Expo will auto-fix any remaining patch-level mismatch.
+[17:05:06] 
+[17:05:06] ===== Local development environment =====
+[17:05:06] Local Expo Go flags normalized; existing API base URL preserved.
+[17:05:06] 
+[17:05:06] ===== Runtime hardening patches =====
+[17:05:06] Patched: app\_layout.tsx
+[17:05:06] Patched: app\diagnostics.tsx
+[17:05:06] Patched: src\api\http.ts
+[17:05:06] Patched: src\auth\AuthProvider.tsx
+[17:05:06] Patched: src\notifications\PushBootstrap.tsx
+[17:05:06] Patched: src\ui\Screen.tsx
+[17:05:06] Hardened network/API error parsing, auth boot, SafeArea, local push, and SDK54 root layout.
+[17:05:06] 
+[17:05:06] ===== npm install / dependency reconciliation =====
+[17:05:13]   changed 1 package, and audited 820 packages in 7s
+[17:05:13]   92 packages are looking for funding
+[17:05:13]     run `npm fund` for details
+[17:05:13]   19 vulnerabilities (10 moderate, 9 high)
+[17:05:13]   To address issues that do not require attention, run:
+[17:05:13]     npm audit fix
+[17:05:13]   To address all issues (including breaking changes), run:
+[17:05:13]     npm audit fix --force
+[17:05:13]   Run `npm audit` for details.
+[17:05:13] PASS: npm install / dependency reconciliation
+[17:05:13] 
+[17:05:13] ===== Expo dependency auto-fix =====
+[17:05:22]   env: load .env
+[17:05:22]   env: export EXPO_PUBLIC_BAYTNA_ENV EXPO_PUBLIC_BAYTNA_API_BASE_URL EXPO_PUBLIC_BAYTNA_ENABLE_NATIVE_PUSH EXPO_PUBLIC_BAYTNA_RELEASE EXPO_PUBLIC_SENTRY_TRACES_SAMPLE_RATE EXPO_PUBLIC_BAYTNA_ENABLE_DIAGNOSTICS BAYTNA_ENABLE_SENTRY_METRO
+[17:05:22]   The following packages should be updated for best compatibility with the installed expo version:
+[17:05:22]     typescript@5.8.3 - expected version: ~5.9.2
+[17:05:22]   Your project may not work correctly until you install the expected versions of the packages.
+[17:05:23]   ظ║ Installing 1 SDK 54.0.0 compatible native module using npm
+[17:05:23]   > npm install
+[17:05:23]   changed 1 package, and audited 820 packages in 5s
+[17:05:23]   92 packages are looking for funding
+[17:05:23]     run `npm fund` for details
+[17:05:23]   19 vulnerabilities (10 moderate, 9 high)
+[17:05:23]   To address issues that do not require attention, run:
+[17:05:23]     npm audit fix
+[17:05:23]   To address all issues (including breaking changes), run:
+[17:05:23]     npm audit fix --force
+[17:05:23]   Run `npm audit` for details.
+[17:05:23] PASS: Expo dependency auto-fix
+[17:05:23] 
+[17:05:23] ===== Expo dependency compatibility check =====
+[17:05:25]   env: load .env
+[17:05:25]   env: export EXPO_PUBLIC_BAYTNA_ENV EXPO_PUBLIC_BAYTNA_API_BASE_URL EXPO_PUBLIC_BAYTNA_ENABLE_NATIVE_PUSH EXPO_PUBLIC_BAYTNA_RELEASE EXPO_PUBLIC_SENTRY_TRACES_SAMPLE_RATE EXPO_PUBLIC_BAYTNA_ENABLE_DIAGNOSTICS BAYTNA_ENABLE_SENTRY_METRO
+[17:05:25]   Dependencies are up to date
+[17:05:25] PASS: Expo dependency compatibility check
+[17:05:25] 
+[17:05:25] ===== Expo Doctor =====
+[17:05:36]   env: load .env
+[17:05:36]   env: export BAYTNA_ENABLE_SENTRY_METRO EXPO_PUBLIC_BAYTNA_API_BASE_URL EXPO_PUBLIC_BAYTNA_ENABLE_DIAGNOSTICS EXPO_PUBLIC_BAYTNA_ENABLE_NATIVE_PUSH EXPO_PUBLIC_BAYTNA_ENV EXPO_PUBLIC_BAYTNA_RELEASE EXPO_PUBLIC_SENTRY_DSN EXPO_PUBLIC_SENTRY_TRACES_SAMPLE_RATE
+[17:05:36]   Running 18 checks on your project...
+[17:05:36]   18/18 checks passed. No issues detected!
+[17:05:36] PASS: Expo Doctor
+[17:05:36] 
+[17:05:36] ===== TypeScript strict typecheck =====
+[17:05:41]   > @baytna/chef-app@0.50.0 typecheck
+[17:05:41]   > tsc --noEmit
+[17:05:41] PASS: TypeScript strict typecheck
+[17:05:41] 
+[17:05:41] ===== Expo public config resolution =====
+[17:05:44]   env: load .env
+[17:05:44]   env: export EXPO_PUBLIC_BAYTNA_ENV EXPO_PUBLIC_BAYTNA_API_BASE_URL EXPO_PUBLIC_BAYTNA_ENABLE_NATIVE_PUSH EXPO_PUBLIC_BAYTNA_RELEASE EXPO_PUBLIC_SENTRY_TRACES_SAMPLE_RATE EXPO_PUBLIC_BAYTNA_ENABLE_DIAGNOSTICS BAYTNA_ENABLE_SENTRY_METRO
+[17:05:44]   [33mظ║ [1m[@sentry/react-native/expo][22m Missing config for [1morganization, project[22m. Environment variables will be used as a fallback during the build. https://docs.sentry.io/platforms/react-native/manual-setup/[0m
+[17:05:44]   {
+[17:05:44]     name: [32m'╪ذ┘è╪ز┘╪د ┘┘╪┤┘è┘'[39m,
+[17:05:44]     slug: [32m'baytna-chef'[39m,
+[17:05:44]     scheme: [32m'baytna-chef'[39m,
+[17:05:44]     version: [32m'0.50.0'[39m,
+[17:05:44]     orientation: [32m'portrait'[39m,
+[17:05:44]     plugins: [
+[17:05:44]       [32m'expo-router'[39m,
+[17:05:44]       [32m'expo-secure-store'[39m,
+[17:05:44]       [32m'expo-notifications'[39m,
+[17:05:44]       [
+[17:05:44]         [32m'expo-image-picker'[39m,
+[17:05:44]         {
+[17:05:44]           photosPermission: [32m'┘╪ص╪ز╪د╪ش ╪د┘┘ê╪╡┘ê┘ ┘┘╪╡┘ê╪▒ ┘╪ح╪▒┘╪د┘é ╪د┘╪╡┘ê╪▒ ╪»╪د╪«┘ ╪ذ┘è╪ز┘╪د.'[39m
+[17:05:44]         }
+[17:05:44]       ],
+[17:05:44]       [32m'@sentry/react-native/expo'[39m
+[17:05:44]     ],
+[17:05:44]     description: [90mundefined[39m,
+[17:05:44]     sdkVersion: [32m'54.0.0'[39m,
+[17:05:44]     platforms: [
+[17:05:44]       [32m'ios'[39m,
+[17:05:44]       [32m'android'[39m,
+[17:05:44]       [32m'web'[39m
+[17:05:44]     ],
+[17:05:44]     android: {
+[17:05:44]       package: [32m'com.baytna.chef'[39m,
+[17:05:44]       permissions: [
+[17:05:44]         [32m'android.permission.RECORD_AUDIO'[39m
+[17:05:44]       ]
+[17:05:44]     },
+[17:05:44]     extra: {
+[17:05:44]       baytnaRelease: [32m'0.50.0'[39m,
+[17:05:44]       baytnaEnvironment: [32m'development'[39m,
+[17:05:44]       router: {}
+[17:05:44]     }
+[17:05:44]   }
+[17:05:44] PASS: Expo public config resolution
+[17:05:44] 
+[17:05:44] ===== Local runtime/config sanity =====
+[17:05:44] Router entry PASS: expo-router/entry
+[17:05:44] Local .env PASS: LAN API + native push off + Sentry Metro off.
+[17:05:44] Metro/Sentry guard PASS.
+[17:05:44] SafeArea import scan PASS.
+[17:05:44] 
+[17:05:44] ===== Backend connectivity =====
+[17:05:44] API: http://192.168.1.129:8000
+[17:05:44] Backend ready: status=ready, database=connected, persistence=sqlalchemy
+[17:05:44] 
+[17:05:44] ===== Chef API read-only integration test =====
+[17:05:44] Testing seeded chef account: +201000000001
+[17:05:45] Profile PASS: ÙØ·Ø¨Ø® Ø£Ù ÙÙØ³Ù / 6 Ø£ÙØªÙØ¨Ø±
+[17:05:45] Dashboard PASS: kitchen=closed, active orders=1
+[17:05:45] Signature menu PASS: count=1
+[17:05:45] Today menu PASS: items=0, status=closed
+[17:05:45] Orders PASS: count=1
+[17:05:45] Special orders PASS: count=1
+[17:05:45] Weekly schedule PASS: days=1
+[17:05:46] Audit auth session revoked for +201000000001.
+[17:05:46] Testing seeded chef account: +201000000002
+[17:05:46] Profile PASS: Ø¨ÙØª ÙØ±ÙÙ / 6 Ø£ÙØªÙØ¨Ø±
+[17:05:46] Dashboard PASS: kitchen=closed, active orders=0
+[17:05:46] Signature menu PASS: count=1
+[17:05:46] Today menu PASS: items=0, status=closed
+[17:05:46] Orders PASS: count=1
+[17:05:46] Special orders PASS: count=1
+[17:05:46] Weekly schedule PASS: days=1
+[17:05:46] Audit auth session revoked for +201000000002.
+[17:05:46] Chef API read-only integration PASS for both seeded chefs.
+[17:05:46] 
+[17:05:46] ===== iOS production-style Metro bundle/export =====
+[17:06:16]   env: load .env
+[17:06:16]   [33mظ║ [1m[@sentry/react-native/expo][22m Missing config for [1morganization, project[22m. Environment variables will be used as a fallback during the build. https://docs.sentry.io/platforms/react-native/manual-setup/[0m
+[17:06:16]   env: export EXPO_PUBLIC_BAYTNA_ENV EXPO_PUBLIC_BAYTNA_API_BASE_URL EXPO_PUBLIC_BAYTNA_ENABLE_NATIVE_PUSH EXPO_PUBLIC_BAYTNA_RELEASE EXPO_PUBLIC_SENTRY_TRACES_SAMPLE_RATE EXPO_PUBLIC_BAYTNA_ENABLE_DIAGNOSTICS BAYTNA_ENABLE_SENTRY_METRO
+[17:06:16]   Starting Metro Bundler
+[17:06:16]   iOS node_modules\expo-router\entry.js ظûôظûôظûّظûّظûّظûّظûّظûّظûّظûّظûّظûّظûّظûّظûّظûّ 14.8% (20/71)
+[17:06:16]   iOS node_modules\expo-router\entry.js ظûôظûôظûôظûôظûôظûّظûّظûّظûّظûّظûّظûّظûّظûّظûّظûّ 36.7% (281/478)
+[17:06:16]   iOS node_modules\expo-router\entry.js ظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûّظûّظûّظûّظûّ 69.5% ( 801/1160)
+[17:06:16]   iOS node_modules\expo-router\entry.js ظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûّ 96.1% (1392/1420)
+[17:06:16]   iOS node_modules\expo-router\entry.js ظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûّ 99.9% (1553/1553)
+[17:06:16]   iOS Bundled 19777ms node_modules\expo-router\entry.js (1553 modules)
+[17:06:16]   iOS node_modules\expo-router\entry.js ظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûôظûّ 99.9% (1553/1553)
+[17:06:16]   ظ║ Assets (23):
+[17:06:16]   node_modules\@react-navigation\elements\lib\module\assets\back-icon-mask.png (653 B)
+[17:06:16]   node_modules\@react-navigation\elements\lib\module\assets\back-icon.png (4 variations | 566 B)
+[17:06:16]   node_modules\@react-navigation\elements\lib\module\assets\clear-icon.png (4 variations | 425 B)
+[17:06:16]   node_modules\@react-navigation\elements\lib\module\assets\close-icon.png (4 variations | 235 B)
+[17:06:16]   node_modules\@react-navigation\elements\lib\module\assets\search-icon.png (3 variations | 582 B)
+[17:06:16]   node_modules\expo-router\assets\arrow_down.png (9.46 kB)
+[17:06:16]   node_modules\expo-router\assets\error.png (469 B)
+[17:06:16]   node_modules\expo-router\assets\file.png (138 B)
+[17:06:16]   node_modules\expo-router\assets\forward.png (188 B)
+[17:06:16]   node_modules\expo-router\assets\pkg.png (364 B)
+[17:06:16]   node_modules\expo-router\assets\sitemap.png (465 B)
+[17:06:16]   node_modules\expo-router\assets\unmatched.png (4.75 kB)
+[17:06:16]   ظ║ ios bundles (1):
+[17:06:16]   _expo/static/js/ios/entry-b073280243de54c3e1e23700019026d9.hbc (4.42 MB)
+[17:06:16]   ظ║ Files (1):
+[17:06:16]   metadata.json (1.8 kB)
+[17:06:16]   Exported: .chef-audit-export
+[17:06:16] PASS: iOS production-style Metro bundle/export
+[17:06:16] 
+[17:06:16] ===== Final result =====
+[17:06:16] ALL REQUIRED CHECKS PASSED.
+[17:06:16] Next start command: npx expo start --lan -c

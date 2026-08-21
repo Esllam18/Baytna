@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: baytna-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-baytna}
+      POSTGRES_USER: ${POSTGRES_USER:-baytna}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-baytna_dev_password}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - baytna_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-baytna} -d ${POSTGRES_DB:-baytna}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  baytna_postgres_data:

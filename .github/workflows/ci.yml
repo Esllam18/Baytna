@@ -1,0 +1,68 @@
+name: Baytna Backend CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: baytna_ci
+          POSTGRES_USER: baytna
+          POSTGRES_PASSWORD: baytna_ci_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U baytna -d baytna_ci"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+
+    env:
+      BAYTNA_ENV: development
+      BAYTNA_DATABASE_URL: postgresql+psycopg://baytna:baytna_ci_password@127.0.0.1:5432/baytna_ci
+      BAYTNA_SEED_DEMO_DATA: false
+      BAYTNA_DEV_RETURN_OTP: false
+      BAYTNA_JWT_SECRET: ci-jwt-secret-with-at-least-thirty-two-characters
+      BAYTNA_OTP_PEPPER: ci-otp-pepper-with-at-least-thirty-two-characters
+      BAYTNA_REFRESH_TOKEN_PEPPER: ci-refresh-pepper-with-at-least-thirty-two-characters
+      BAYTNA_PAYMENT_WEBHOOK_SECRET: ci-payment-webhook-secret-with-at-least-32-chars
+      BAYTNA_PAYMENT_PROVIDER: mock
+      BAYTNA_ALLOWED_HOSTS: testserver,localhost,127.0.0.1
+      BAYTNA_CORS_ORIGINS: http://localhost:3000
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        working-directory: backend
+        run: python -m pip install -e ".[dev]"
+
+      - name: Compile
+        working-directory: backend
+        run: python -m compileall -q app tests
+
+      - name: Migrate real PostgreSQL
+        working-directory: backend
+        run: alembic upgrade head
+
+      - name: PostgreSQL integration checks
+        working-directory: backend
+        run: python ../scripts/postgres_integration_check.py
+
+      - name: Full regression tests
+        working-directory: backend
+        run: pytest -q
+
+      - name: Export OpenAPI
+        working-directory: backend
+        run: python ../scripts/export_openapi.py

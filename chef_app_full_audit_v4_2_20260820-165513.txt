@@ -1,0 +1,127 @@
+[16:55:13] 
+[16:55:13] ===== Preflight =====
+[16:55:13] Project: D:\Baytna\apps\chef_app
+[16:55:13] Repair version: v4.2
+[16:55:13] Encoding guard: UTF-8 without BOM enforced for JSON/config files.
+[16:55:14] 
+[16:55:14] ===== Backup =====
+[16:55:14] Backup: D:\Baytna\hotfix_backups\chef_full_audit_v4_2_20260820-165513
+[16:55:14] 
+[16:55:14] ===== Normalize Expo SDK 54 configuration =====
+[16:55:14] package.json aligned to the same SDK54 family used by the working Customer App; Expo will auto-fix any remaining patch-level mismatch.
+[16:55:14] 
+[16:55:14] ===== Local development environment =====
+[16:55:14] Local Expo Go flags normalized; existing API base URL preserved.
+[16:55:14] 
+[16:55:14] ===== Runtime hardening patches =====
+[16:55:14] Patched: app\_layout.tsx
+[16:55:14] Patched: app\diagnostics.tsx
+[16:55:14] Patched: src\api\http.ts
+[16:55:14] Patched: src\auth\AuthProvider.tsx
+[16:55:14] Patched: src\notifications\PushBootstrap.tsx
+[16:55:14] Patched: src\ui\Screen.tsx
+[16:55:14] Hardened network/API error parsing, auth boot, SafeArea, local push, and SDK54 root layout.
+[16:55:14] 
+[16:55:14] ===== npm install / dependency reconciliation =====
+[16:55:23]   changed 1 package, and audited 820 packages in 8s
+[16:55:23]   92 packages are looking for funding
+[16:55:23]     run `npm fund` for details
+[16:55:23]   19 vulnerabilities (10 moderate, 9 high)
+[16:55:23]   To address issues that do not require attention, run:
+[16:55:23]     npm audit fix
+[16:55:23]   To address all issues (including breaking changes), run:
+[16:55:23]     npm audit fix --force
+[16:55:23]   Run `npm audit` for details.
+[16:55:23] PASS: npm install / dependency reconciliation
+[16:55:23] 
+[16:55:23] ===== Expo dependency auto-fix =====
+[16:55:33]   env: load .env
+[16:55:33]   env: export EXPO_PUBLIC_BAYTNA_ENV EXPO_PUBLIC_BAYTNA_API_BASE_URL EXPO_PUBLIC_BAYTNA_ENABLE_NATIVE_PUSH EXPO_PUBLIC_BAYTNA_RELEASE EXPO_PUBLIC_SENTRY_TRACES_SAMPLE_RATE EXPO_PUBLIC_BAYTNA_ENABLE_DIAGNOSTICS BAYTNA_ENABLE_SENTRY_METRO
+[16:55:33]   The following packages should be updated for best compatibility with the installed expo version:
+[16:55:33]     typescript@5.8.3 - expected version: ~5.9.2
+[16:55:33]   Your project may not work correctly until you install the expected versions of the packages.
+[16:55:33]   ظ║ Installing 1 SDK 54.0.0 compatible native module using npm
+[16:55:33]   > npm install
+[16:55:33]   changed 1 package, and audited 820 packages in 5s
+[16:55:33]   92 packages are looking for funding
+[16:55:33]     run `npm fund` for details
+[16:55:33]   19 vulnerabilities (10 moderate, 9 high)
+[16:55:33]   To address issues that do not require attention, run:
+[16:55:33]     npm audit fix
+[16:55:33]   To address all issues (including breaking changes), run:
+[16:55:33]     npm audit fix --force
+[16:55:33]   Run `npm audit` for details.
+[16:55:33] PASS: Expo dependency auto-fix
+[16:55:33] 
+[16:55:33] ===== Expo dependency compatibility check =====
+[16:55:36]   env: load .env
+[16:55:36]   env: export EXPO_PUBLIC_BAYTNA_ENV EXPO_PUBLIC_BAYTNA_API_BASE_URL EXPO_PUBLIC_BAYTNA_ENABLE_NATIVE_PUSH EXPO_PUBLIC_BAYTNA_RELEASE EXPO_PUBLIC_SENTRY_TRACES_SAMPLE_RATE EXPO_PUBLIC_BAYTNA_ENABLE_DIAGNOSTICS BAYTNA_ENABLE_SENTRY_METRO
+[16:55:36]   Dependencies are up to date
+[16:55:36] PASS: Expo dependency compatibility check
+[16:55:36] 
+[16:55:36] ===== Expo Doctor =====
+[16:55:48]   env: load .env
+[16:55:48]   env: export BAYTNA_ENABLE_SENTRY_METRO EXPO_PUBLIC_BAYTNA_API_BASE_URL EXPO_PUBLIC_BAYTNA_ENABLE_DIAGNOSTICS EXPO_PUBLIC_BAYTNA_ENABLE_NATIVE_PUSH EXPO_PUBLIC_BAYTNA_ENV EXPO_PUBLIC_BAYTNA_RELEASE EXPO_PUBLIC_SENTRY_DSN EXPO_PUBLIC_SENTRY_TRACES_SAMPLE_RATE
+[16:55:48]   Running 18 checks on your project...
+[16:55:48]   18/18 checks passed. No issues detected!
+[16:55:48] PASS: Expo Doctor
+[16:55:48] 
+[16:55:48] ===== TypeScript strict typecheck =====
+[16:55:55]   > @baytna/chef-app@0.50.0 typecheck
+[16:55:55]   > tsc --noEmit
+[16:55:55] PASS: TypeScript strict typecheck
+[16:55:55] 
+[16:55:55] ===== Expo public config resolution =====
+[16:55:58]   env: load .env
+[16:55:58]   env: export EXPO_PUBLIC_BAYTNA_ENV EXPO_PUBLIC_BAYTNA_API_BASE_URL EXPO_PUBLIC_BAYTNA_ENABLE_NATIVE_PUSH EXPO_PUBLIC_BAYTNA_RELEASE EXPO_PUBLIC_SENTRY_TRACES_SAMPLE_RATE EXPO_PUBLIC_BAYTNA_ENABLE_DIAGNOSTICS BAYTNA_ENABLE_SENTRY_METRO
+[16:55:58]   [33mظ║ [1m[@sentry/react-native/expo][22m Missing config for [1morganization, project[22m. Environment variables will be used as a fallback during the build. https://docs.sentry.io/platforms/react-native/manual-setup/[0m
+[16:55:58]   {
+[16:55:58]     name: [32m'╪ذ┘è╪ز┘╪د ┘┘╪┤┘è┘'[39m,
+[16:55:58]     slug: [32m'baytna-chef'[39m,
+[16:55:58]     scheme: [32m'baytna-chef'[39m,
+[16:55:58]     version: [32m'0.50.0'[39m,
+[16:55:58]     orientation: [32m'portrait'[39m,
+[16:55:58]     plugins: [
+[16:55:58]       [32m'expo-router'[39m,
+[16:55:58]       [32m'expo-secure-store'[39m,
+[16:55:58]       [32m'expo-notifications'[39m,
+[16:55:58]       [
+[16:55:58]         [32m'expo-image-picker'[39m,
+[16:55:58]         {
+[16:55:58]           photosPermission: [32m'┘╪ص╪ز╪د╪ش ╪د┘┘ê╪╡┘ê┘ ┘┘╪╡┘ê╪▒ ┘╪ح╪▒┘╪د┘é ╪د┘╪╡┘ê╪▒ ╪»╪د╪«┘ ╪ذ┘è╪ز┘╪د.'[39m
+[16:55:58]         }
+[16:55:58]       ],
+[16:55:58]       [32m'@sentry/react-native/expo'[39m
+[16:55:58]     ],
+[16:55:58]     description: [90mundefined[39m,
+[16:55:58]     sdkVersion: [32m'54.0.0'[39m,
+[16:55:58]     platforms: [
+[16:55:58]       [32m'ios'[39m,
+[16:55:58]       [32m'android'[39m,
+[16:55:58]       [32m'web'[39m
+[16:55:58]     ],
+[16:55:58]     android: {
+[16:55:58]       package: [32m'com.baytna.chef'[39m,
+[16:55:58]       permissions: [
+[16:55:58]         [32m'android.permission.RECORD_AUDIO'[39m
+[16:55:58]       ]
+[16:55:58]     },
+[16:55:58]     extra: {
+[16:55:58]       baytnaRelease: [32m'0.50.0'[39m,
+[16:55:58]       baytnaEnvironment: [32m'development'[39m,
+[16:55:58]       router: {}
+[16:55:58]     }
+[16:55:58]   }
+[16:55:58] PASS: Expo public config resolution
+[16:55:58] 
+[16:55:58] ===== Local runtime/config sanity =====
+[16:55:58] Router entry PASS: expo-router/entry
+[16:55:58] Local .env PASS: LAN API + native push off + Sentry Metro off.
+[16:55:58] Metro/Sentry guard PASS.
+[16:55:59] SafeArea import scan PASS.
+[16:55:59] 
+[16:55:59] ===== Backend connectivity =====
+[16:55:59] API: http://192.168.1.33:8000
+[16:56:09] 
+[16:56:09] REPAIR/AUDIT STOPPED: The operation has timed out.
+[16:56:09] Backup is safe at: D:\Baytna\hotfix_backups\chef_full_audit_v4_2_20260820-165513

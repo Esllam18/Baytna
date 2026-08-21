@@ -1,0 +1,32 @@
+{
+  "release": {
+    "version": "0.50.0",
+    "migration_head": "0025_sprint50",
+    "commit": ""
+  },
+  "zone_id": "",
+  "session_id": "",
+  "slo_auto_pause_policy_verified": false,
+  "capacity_forecast_verified": false,
+  "daily_close_cadence_verified": false,
+  "evidence_retention_verified": false,
+  "expansion_review_verified": false,
+  "policy": null,
+  "latest_forecast": null,
+  "latest_review": null,
+  "cadence": {
+    "rows": [],
+    "closed_system_rows": 0,
+    "overdue_open_rows": 0
+  },
+  "evidence_retention": {
+    "pack_count": 0,
+    "complete_final_count": 0,
+    "malformed_complete": 0,
+    "malformed_working": 0
+  },
+  "verified": false,
+  "failures": [
+    "example_only_not_live_evidence"
+  ]
+}

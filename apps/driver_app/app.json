@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "بيتنا للمندوب",
+    "slug": "baytna-driver",
+    "scheme": "baytna-driver",
+    "version": "0.50.0",
+    "orientation": "portrait",
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "نحتاج الوصول للصور لتسجيل إثبات توصيل الطلب."
+        }
+      ],
+      "expo-notifications",
+      "@sentry/react-native/expo"
+    ],
+    "android": {
+      "package": "com.baytna.driver"
+    }
+  }
+}

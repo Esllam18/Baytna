@@ -1,0 +1,22 @@
+# Sprint 34 — Definition of Done
+
+- [x] Phone authentication screen.
+- [x] OTP verification screen.
+- [x] Secure session gate.
+- [x] Baytna logo asset wired.
+- [x] Design tokens from approved High-Fidelity UI.
+- [x] Connected Home C07.
+- [x] Chefs list C08.
+- [x] Chef profile C10.
+- [x] Today’s Kitchen tab.
+- [x] Signature Menu tab.
+- [x] Dish details C11.
+- [x] Quantity selector.
+- [x] Add to cart only for real daily-menu inventory.
+- [x] Sold-out UI.
+- [x] Special-order informational state.
+- [x] RTL styling.
+- [x] Empty/loading/error states.
+- [x] Core bottom navigation shell.
+- [x] Backend contract guard updated.
+- [x] Backend regression preserved.

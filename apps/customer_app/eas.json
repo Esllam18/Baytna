@@ -1,0 +1,39 @@
+{
+  "cli": {
+    "version": ">= 10.0.0"
+  },
+  "build": {
+    "pilot": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_BAYTNA_ENV": "staging",
+        "EXPO_PUBLIC_BAYTNA_ENABLE_NATIVE_PUSH": "true",
+        "EXPO_PUBLIC_BAYTNA_RELEASE": "0.50.0",
+        "EXPO_PUBLIC_BAYTNA_ENABLE_DIAGNOSTICS": "false"
+      },
+      "environment": "preview"
+    },
+    "production": {
+      "distribution": "store",
+      "env": {
+        "EXPO_PUBLIC_BAYTNA_ENV": "production",
+        "EXPO_PUBLIC_BAYTNA_ENABLE_NATIVE_PUSH": "true",
+        "EXPO_PUBLIC_BAYTNA_RELEASE": "0.50.0",
+        "EXPO_PUBLIC_BAYTNA_ENABLE_DIAGNOSTICS": "false"
+      },
+      "environment": "production"
+    },
+    "pilot-diagnostics": {
+      "extends": "pilot",
+      "distribution": "internal",
+      "environment": "preview",
+      "env": {
+        "EXPO_PUBLIC_BAYTNA_ENABLE_DIAGNOSTICS": "true",
+        "EXPO_PUBLIC_BAYTNA_RELEASE": "0.50.0"
+      }
+    }
+  }
+}

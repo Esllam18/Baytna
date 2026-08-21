@@ -1,0 +1,27 @@
+name: Baytna Staging Validation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    environment: staging
+
+    env:
+      BAYTNA_STAGING_BASE_URL: ${{ secrets.BAYTNA_STAGING_BASE_URL }}
+      BAYTNA_STAGING_CUSTOMER_BEARER_TOKEN: ${{ secrets.BAYTNA_STAGING_CUSTOMER_BEARER_TOKEN }}
+      BAYTNA_STAGING_ADMIN_BEARER_TOKEN: ${{ secrets.BAYTNA_STAGING_ADMIN_BEARER_TOKEN }}
+      BAYTNA_STAGING_FCM_DEVICE_TOKEN: ${{ secrets.BAYTNA_STAGING_FCM_DEVICE_TOKEN }}
+      BAYTNA_STAGING_TEST_SMS: ${{ vars.BAYTNA_STAGING_TEST_SMS || 'false' }}
+      BAYTNA_STAGING_DEVICE_PLATFORM: ${{ vars.BAYTNA_STAGING_DEVICE_PLATFORM || 'android' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run staging E2E
+        run: python scripts/staging_e2e.py

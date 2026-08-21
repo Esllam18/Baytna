@@ -1,0 +1,5 @@
+defaults.url=https://sentry.io/
+defaults.org=REPLACE_SENTRY_ORG
+defaults.project=REPLACE_SENTRY_PROJECT
+# Never commit auth tokens here.
+# Supply SENTRY_AUTH_TOKEN through the EAS build environment.

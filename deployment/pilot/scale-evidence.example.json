@@ -1,0 +1,65 @@
+{
+  "release": {
+    "service": "baytna-api",
+    "version": "0.50.0",
+    "environment": "staging",
+    "slot": "pilot",
+    "commit": "",
+    "migration_head": "0025_sprint50"
+  },
+  "program": {
+    "id": "",
+    "name": "Baytna 6 October Pilot",
+    "status": "planned",
+    "required_stability_weeks": 8
+  },
+  "stability": {
+    "stability_gate_met": false,
+    "current_consecutive_passed_weeks": 0,
+    "required_weeks": 8,
+    "blockers": [
+      "need_8_complete_full_weeks"
+    ]
+  },
+  "cohorts": {
+    "acquired_customers": 0,
+    "cohorts": []
+  },
+  "economics": {
+    "economics_evaluable": false,
+    "revenue_coverage_pct": 0.0,
+    "cost_coverage_pct": 0.0,
+    "unverified_cost_entries": 0,
+    "operational_profit_positive": null,
+    "operational_profit_minor": 0,
+    "blockers": [
+      "no_delivered_orders"
+    ]
+  },
+  "evidence": [
+    {
+      "evidence_type": "pilot_qa_exit",
+      "status": "pending",
+      "reference": null
+    },
+    {
+      "evidence_type": "operations_signoff",
+      "status": "pending",
+      "reference": null
+    }
+  ],
+  "post_pilot": {
+    "profitability_calculated_from_backend": true,
+    "operational_profit_evidence_status": "backend_unevaluable",
+    "scale_ready": false,
+    "scale_blockers": [
+      "pilot_program_not_completed",
+      "eight_week_stability_gate_not_met"
+    ]
+  },
+  "scale_ready": false,
+  "scale_blockers": [
+    "pilot_program_not_completed",
+    "eight_week_stability_gate_not_met"
+  ]
+}

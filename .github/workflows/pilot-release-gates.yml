@@ -1,0 +1,90 @@
+name: Pilot Release Gates
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "backend/**"
+      - "apps/**"
+      - "deployment/pilot/**"
+      - "scripts/release_source_preflight.py"
+      - "scripts/go_live_gate.py"
+      - "scripts/live_release_probe.py"
+
+jobs:
+  source-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/release_source_preflight.py
+      - run: python scripts/verify_sprint42_structure.py
+      - run: python scripts/verify_crash_reporting_static.py
+
+  backend-regression:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      BAYTNA_ENV: development
+      BAYTNA_DATABASE_URL: sqlite+pysqlite:///:memory:
+      BAYTNA_SEED_DEMO_DATA: "true"
+      BAYTNA_DEV_RETURN_OTP: "true"
+      BAYTNA_JWT_SECRET: ci-jwt-secret-that-is-longer-than-32-characters
+      BAYTNA_OTP_PEPPER: ci-otp-pepper
+      BAYTNA_REFRESH_TOKEN_PEPPER: ci-refresh-pepper
+      BAYTNA_PAYMENT_WEBHOOK_SECRET: ci-payment-webhook-secret
+      BAYTNA_PAYMENT_PROVIDER: mock
+      BAYTNA_ALLOWED_HOSTS: localhost,127.0.0.1,testserver
+      BAYTNA_CORS_ORIGINS: http://localhost:3000,http://localhost:5173
+      BAYTNA_STORAGE_PROVIDER: local
+      BAYTNA_MEDIA_SIGNING_SECRET: ci-media-signing-secret-1234567890
+      BAYTNA_INTEGRATION_ENCRYPTION_SECRET: ci-integration-encryption-secret-1234567890
+      BAYTNA_NOTIFICATION_PUSH_PROVIDER: logging
+      BAYTNA_NOTIFICATION_SMS_PROVIDER: logging
+      BAYTNA_NOTIFICATION_PROVIDER_WEBHOOK_SECRET: ci-provider-webhook-secret-1234567890
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+      - run: python -m compileall -q app tests
+      - run: pytest -q
+
+  mobile-typecheck:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [customer_app, chef_app, driver_app]
+    defaults:
+      run:
+        working-directory: apps/${{ matrix.app }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install --no-audit --no-fund
+      - run: npm run typecheck
+
+  admin-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/admin_dashboard
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install --no-audit --no-fund
+      - run: npm run build
+        env:
+          VITE_BAYTNA_ENV: staging
+          VITE_BAYTNA_API_BASE_URL: https://pilot-api.example.com
+          VITE_BAYTNA_RELEASE: 0.50.0
+          VITE_BAYTNA_ENABLE_DIAGNOSTICS: "false"

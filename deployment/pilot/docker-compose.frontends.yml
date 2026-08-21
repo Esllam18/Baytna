@@ -1,0 +1,12 @@
+services:
+  admin-dashboard:
+    build:
+      context: ../../apps/admin_dashboard
+      args:
+        VITE_BAYTNA_ENV: staging
+        VITE_BAYTNA_API_BASE_URL: ${BAYTNA_PILOT_API_PUBLIC_URL:?required}
+        VITE_BAYTNA_RELEASE: 0.50.0
+        VITE_SENTRY_DSN: ${BAYTNA_ADMIN_SENTRY_DSN:-}
+    restart: unless-stopped
+    ports:
+      - "8080:80"

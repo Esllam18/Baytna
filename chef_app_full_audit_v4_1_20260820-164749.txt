@@ -1,0 +1,49 @@
+[16:47:49] 
+[16:47:49] ===== Preflight =====
+[16:47:49] Project: D:\Baytna\apps\chef_app
+[16:47:49] Repair version: v4.1
+[16:47:49] Encoding guard: UTF-8 without BOM enforced for JSON/config files.
+[16:47:50] 
+[16:47:50] ===== Backup =====
+[16:47:50] Backup: D:\Baytna\hotfix_backups\chef_full_audit_v4_1_20260820-164749
+[16:47:50] 
+[16:47:50] ===== Normalize Expo SDK 54 configuration =====
+[16:47:51] package.json aligned to the same SDK54 family used by the working Customer App.
+[16:47:51] 
+[16:47:51] ===== Local development environment =====
+[16:47:51] Local Expo Go flags normalized; existing API base URL preserved.
+[16:47:51] 
+[16:47:51] ===== Runtime hardening patches =====
+[16:47:51] Patched: app\_layout.tsx
+[16:47:51] Patched: app\diagnostics.tsx
+[16:47:51] Patched: src\api\http.ts
+[16:47:51] Patched: src\auth\AuthProvider.tsx
+[16:47:51] Patched: src\notifications\PushBootstrap.tsx
+[16:47:51] Patched: src\ui\Screen.tsx
+[16:47:51] Hardened network/API error parsing, auth boot, SafeArea, local push, and SDK54 root layout.
+[16:47:51] 
+[16:47:51] ===== npm install / dependency reconciliation =====
+[16:47:58]   
+[16:47:58]   up to date, audited 820 packages in 6s
+[16:47:58]   
+[16:47:58]   92 packages are looking for funding
+[16:47:58]     run `npm fund` for details
+[16:47:58]   
+[16:47:58]   19 vulnerabilities (10 moderate, 9 high)
+[16:47:58]   
+[16:47:58]   To address issues that do not require attention, run:
+[16:47:58]     npm audit fix
+[16:47:58]   
+[16:47:58]   To address all issues (including breaking changes), run:
+[16:47:58]     npm audit fix --force
+[16:47:58]   
+[16:47:58]   Run `npm audit` for details.
+[16:47:58] PASS: npm install / dependency reconciliation
+[16:47:58] 
+[16:47:58] ===== Expo dependency compatibility =====
+[16:48:01]   env: load .env
+[16:48:01]   env: export EXPO_PUBLIC_BAYTNA_ENV EXPO_PUBLIC_BAYTNA_API_BASE_URL EXPO_PUBLIC_BAYTNA_ENABLE_NATIVE_PUSH EXPO_PUBLIC_BAYTNA_RELEASE EXPO_PUBLIC_SENTRY_TRACES_SAMPLE_RATE EXPO_PUBLIC_BAYTNA_ENABLE_DIAGNOSTICS BAYTNA_ENABLE_SENTRY_METRO
+[16:48:10] FAIL: Expo dependency compatibility -> The following packages should be updated for best compatibility with the installed expo version:
+[16:48:10] 
+[16:48:10] REPAIR/AUDIT STOPPED: The following packages should be updated for best compatibility with the installed expo version:
+[16:48:10] Backup is safe at: D:\Baytna\hotfix_backups\chef_full_audit_v4_1_20260820-164749
